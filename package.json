@@ -4,7 +4,7 @@
   "description": "prueba de busqueda de productos en Lider.cl",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/npm/cli.git"
+    "url" : "https://github.com/urayi/backend-walmart"
   },
   "main": "index.js",
   "scripts": {
