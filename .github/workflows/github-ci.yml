@@ -24,8 +24,8 @@ jobs:
       - name: Dependencias
         run: npm install
 
-      #- name: Testing
-      #  run: npm test
+      - name: Testing
+        run: npm test -- --coverage
 
       - name: Docker Build, Push y Deploy a Heroku
         id: heroku
