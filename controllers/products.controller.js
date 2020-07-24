@@ -22,7 +22,7 @@ const getProducts = async (req, res) => {
       return res.status(500).json({ success: false, error: err })
     }
     if (!products.length) {
-      return res.status(204).json({ success: false, error: `No se encontraron Productos` })
+      return res.status(200).json({ success: false, error: `No se encontraron Productos` })
     }
     if (search === search.split('').reverse().join('') && (Number(search) || search.length > 3)) {
       console.log('Los precios de los productos tendrán 50% de descuento');
