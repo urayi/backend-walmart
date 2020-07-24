@@ -1,17 +1,16 @@
-FROM node:10
+FROM node:10-alpine
 
-# Create app directory
+# Crear Directorio de la API
 WORKDIR /usr/src/app
 
-# CMD make database-up
-# Install app dependencies
+# Instalación de dependencias
 COPY package*.json ./
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
+# Copia archivos
 COPY . .
 
 EXPOSE 8080
+
+# Inicia servidor de la API
 CMD [ "node", "server.js" ]

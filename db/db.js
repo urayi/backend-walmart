@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-    .connect('mongodb://productListUser:productListPassword@127.0.0.1:27017/promotions?authSource=admin&readPreference=primary&ssl=false',
+    .connect(process.env.DB_URL,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true
