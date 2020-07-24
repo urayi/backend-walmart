@@ -1,15 +1,38 @@
-on: [push]
+name: Integración continua para Backend en prueba de Walmart
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-  job_1:
-    name: Add 3 and 7
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Node 
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - run: npm install
-      - run: npm start
-      - run: npm test
+          node-version: 10
+
+      - name: Limpia la integración
+        run: npm ci
+
+      - name: Dependencias
+        run: npm install
+
+      #- name: Testing
+      #  run: npm test
+
+      - name: Docker Build, Push y Deploy a Heroku
+        id: heroku
+        uses: jctaveras/heroku-deploy@v2.0.0
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
+          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
+          dockerfile_path: '.' # set the path to the folder wher the Dokerfile is located
+          options: '' # Docker Build Options
