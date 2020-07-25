@@ -1,35 +1,24 @@
-# Lider Challenge
-
-# Welcome!
-
-We really appreciate your interest in this challenge and we hope you have some good time with this ;)!
+# Desafío Walmart
 
 ### Installation
 
-If you want to set the mongodb and import the products to start with the challenge, use this command:
+Se requiere tener instalado NodeJS y NPM
+
+Para levantar el sistema de debe ejecutar
 ```sh
-$ make database-up
+$ npm install && npm start
 ```
 
-If you only want to run the mongodb image, use this one:
+Para ejecutar los test unitarios y verificar la covertura
 ```sh
-$ make database-docker-up
+$ npm test -- --coverage
 ```
 
-If you only want to import the products in the running mongodb image, use this:
-```sh
-$ make database-provision
-```
-### Something went wrong?
+### API
 
-If something went wrong, you can stop and remove the container with this:
+Para consultar el servicio se usa el suguiente comando
 ```sh
-$ make database-down
+$ curl --request GET '{API_URL}/api/products?query={SEARCH_WORD}'
 ```
 
-If you want to reset the container:
-```sh
-$ make database-reset
-```
-
-Anything else?, you are always welcome to have a look at the Makefile ;)
+Donde API_URL es la url base del servidor del servicio y SEARCH_WORD la palabra a buscar

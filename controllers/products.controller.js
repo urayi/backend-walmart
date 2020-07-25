@@ -3,10 +3,8 @@ const Product = require('../models/product.model');
 const getProducts = async (req, res) => {
 
   let search = req.query.query ? req.query.query.toString().toLowerCase() : null;
-  /* let search = req.query.query ? Number(req.query.query) ? req.query.query.toString().toLowerCase() :
-    req.query.query.length > 3 ? req.query.query.toString().toLowerCase() : null : null; */
   let discount = 50;
-  let query = search ? new RegExp("^(.*?(" + search + ")[^$]*)$") : null;
+  let query = search && !/[.!\[\]|$\^()\?{}*+<>]/g.test(search) ? new RegExp("^(.*?(" + search + ")[^$]*)$", 'i') : null;
   let promotions = [];
 
   console.log('Hay Query:', Number(search) ? Number(search) : null, Number(search) ? null : query, Number(search) ? null : query);
@@ -19,6 +17,7 @@ const getProducts = async (req, res) => {
     ]
   }, (err, products) => {
     if (err) {
+      error.status
       return res.status(500).json({ success: false, error: err })
     }
     if (!products.length) {
@@ -37,6 +36,4 @@ const getProducts = async (req, res) => {
   }).catch(err => console.log(err))
 }
 
-module.exports = {
-  getProducts,
-}
+module.exports = { getProducts, }
