@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Testing
-RUN npm test
+RUN npm test --runInBand --detectOpenHandles -- --coverage
 
 EXPOSE 8080
 

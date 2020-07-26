@@ -2,7 +2,7 @@ const request = require('supertest')
 const app = require('../app')
 const db = require('../db/db')
 
-jest.setTimeout(60000);
+jest.setTimeout(10000);
 describe('Test de endpoints de la aplicación', () => {
 
   beforeAll(() => {
@@ -97,7 +97,7 @@ describe('Test de endpoints de la aplicación', () => {
       });
   })
 
-  test('Busqueda por palabra de hasta 3 carácteres contenida en brand o description', () => {
+  test('Busqueda por palabra de hasta 3 carácteres contenida en brand o description', async () => {
     return request(app)
       .get('/api/products').query({ query: 'asd' })
       .expect(200)
