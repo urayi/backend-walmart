@@ -6,11 +6,13 @@ const db = require('./db/db')
 const productRouter = require('./routes/products.route')
 const app = express()
 
-db.connect(process.env.DB_URL);
+console.log(process.env.DB_URL);
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
+db.connect(process.env.DB_URL);
 
 console.log('\x1b[36m%s\x1b[0m', `API para prueba de ingreso a WALLMART`)
 

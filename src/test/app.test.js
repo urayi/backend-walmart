@@ -6,10 +6,10 @@ jest.setTimeout(30000);
 describe('Test de endpoints de la aplicación', () => {
 
   beforeAll(() => {
-    db.connect(process.env.DB_URL).catch()
+    db.connect(process.env.DB_URL)
   })
 
-  afterAll(() => {
+  afterAll(async () => {
     db.disconnect()
   })
 
@@ -115,5 +115,3 @@ describe('Test de endpoints de la aplicación', () => {
   })
 
 })
-
-module.exports = db
