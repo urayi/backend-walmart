@@ -1,5 +1,5 @@
 
-const app = require('./app');
+const app = require('./src/app');
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 8080
 

@@ -12,10 +12,14 @@ RUN npm install
 # Copia archivos
 COPY . .
 
+# Archivo .env
+ADD .env ./
+RUN echo ${DB_URL} >> ./.env
+
 # Testing
 RUN npm test
 
 EXPOSE 8080
 
 # Inicia servidor de la API
-CMD [ "node", "./src/server.js" ]
+CMD [ "node", "server.js" ]
