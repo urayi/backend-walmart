@@ -16,7 +16,7 @@ jobs:
       - name: Node 
         uses: actions/setup-node@v1
         env:
-          DB_URL: ${{ secrets.HEROKU_EMAIL }}
+          DB_URL: ${{ secrets.DB_URL }}
         with:
           node-version: 10
 
