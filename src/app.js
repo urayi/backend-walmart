@@ -6,24 +6,26 @@ const db = require('./db/db')
 const productRouter = require('./routes/products.route')
 const app = express()
 
-const host = process.env.HOST || '0.0.0.0'
-const port = process.env.PORT || 8080
+db.connect(process.env.DB_URL);
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
 
-console.log(`API para prueba de ingreso a WALLMART`)
+console.log('\x1b[36m%s\x1b[0m', `API para prueba de ingreso a WALLMART`)
 
-// db.on('error', console.error.bind(console, 'Error conectando con MongoDB'))
-
-app.get('/', (req, res) => {
-    console.log(`Será redirigido al portal de la aplicación: https://walmart-front.herokuapp.com/`)
-    res.redirect('https://walmart-front.herokuapp.com/')
-})
+// db.mongoose.connection.on('error', console.error.bind(console, 'Error conectando con MongoDB'))
 
 app.use('/api', productRouter)
 
-app.listen(port, host, () => console.log("\x1b[32m", `Servidor corriendo en el puerto: ${host}:${port}`))
+app.get('/', (req, res) => {
+    console.log(`Será redirigido al portal de la aplicación: https://walmart-front.herokuapp.com/`)
+    res.redirect(302, 'https://walmart-front.herokuapp.com/')
+})
+
+app.get('*', (req, res) => {
+    console.log(`Será redirigido al portal de la aplicación: https://walmart-front.herokuapp.com/`)
+    res.redirect(302, 'https://walmart-front.herokuapp.com/')
+})
 
 module.exports = app

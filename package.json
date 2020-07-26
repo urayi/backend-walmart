@@ -6,10 +6,10 @@
     "type": "git",
     "url": "https://github.com/urayi/backend-walmart"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
+    "start": "node src/server.js",
+    "test": "jest '--coverage'"
   },
   "keywords": [],
   "author": "José Polanco",
@@ -24,9 +24,12 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
+    "babel-cli": "^6.26.0",
     "babel-jest": "^26.1.0",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.2",
     "jest": "^26.1.0",
+    "superagent": "^5.3.1",
     "supertest": "^4.0.2"
   },
   "jest": {
