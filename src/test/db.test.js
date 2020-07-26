@@ -16,10 +16,10 @@ describe('Test de conexión de la base de datos', () => {
     }
   })
 
-  test('Debería conectar a la base de datos', async () => {
+  test('Debería conectar a la base de datos', () => {
     if (db.mongoose.connection.readyState === 0) {
-      await db.connect(process.env.DB_URL).finally(async () => {
-        expect(db.mongoose.connection.readyState).toBe(0)
+      db.connect(process.env.DB_URL).then(async () => {
+        await expect(db.mongoose.connection.readyState).toBe(1)
       })
     } else {
       expect(db.mongoose.connection.readyState).toBe(1)
