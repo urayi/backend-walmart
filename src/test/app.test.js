@@ -2,7 +2,7 @@ const request = require('supertest')
 const app = require('../app')
 const db = require('../db/db')
 
-jest.setTimeout(20000);
+jest.setTimeout(60000);
 describe('Test de endpoints de la aplicación', () => {
 
   beforeAll(() => {

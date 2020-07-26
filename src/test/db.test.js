@@ -1,6 +1,6 @@
 const db = require('../db/db')
 
-jest.setTimeout(20000);
+jest.setTimeout(60000);
 describe('Test de conexión de la base de datos', () => {
 
   beforeEach(() => {
