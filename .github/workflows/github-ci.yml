@@ -38,10 +38,10 @@ jobs:
         run: echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
 
       - name: Docker Build
-      - run: docker build --file Dockerfile --build-arg DB_URL=${{ secrets.DB_URL }} --tag registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+        run: docker build --file Dockerfile --build-arg DB_URL=${{ secrets.DB_URL }} --tag registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
 
       - name: Docker Push
-      - run: heroku container:push web --app ${{ secrets.HEROKU_APP_NAME }}
+        run: heroku container:push web --app ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Docker Release/Deploy
-      - run: heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
+        run: heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
