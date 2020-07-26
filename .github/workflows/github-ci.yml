@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Testing
-        run: npm test --runInBand --detectOpenHandles -- --coverage
+        run: npm test
 
       - name: Docker Build, Push y Deploy a Heroku
         id: heroku
