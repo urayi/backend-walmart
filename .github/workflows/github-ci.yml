@@ -17,14 +17,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
 
       - name: Limpia la integración
         run: npm ci
 
       - name: Dependencias
         run: npm install
-        env:
-          DB_URL: ${{ secrets.DB_URL }}
 
       - name: Testing
         run: npm test
@@ -37,4 +37,4 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
           dockerfile_path: '.' # set the path to the folder wher the Dokerfile is located
-          options: "--build-arg DB_URL={{ secrets.DB_URL }}"
+          options: "--build-arg DB_URL={{ DB_URL }}"
