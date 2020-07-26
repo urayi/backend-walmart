@@ -41,7 +41,7 @@ jobs:
         run: docker build --file Dockerfile --build-arg DB_URL=${{ secrets.DB_URL }} --tag registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
 
       - name: Docker Push
-        run: HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:push web --app registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
+        run: HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
 
       - name: Docker Release/Deploy
         run: HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
